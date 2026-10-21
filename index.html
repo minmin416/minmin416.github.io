@@ -51,6 +51,17 @@ html[data-card] body::after { background-size:1200px auto; } html[data-card] .wi
 html[data-theme=Vista] .window { padding:7px; border:1px solid #344a5c; border-radius:9px; background:linear-gradient(125deg,#e8f9ffb8,#9bb9d4c9 50%,#d7edffb5); box-shadow:inset 0 0 0 1px #fff9,0 8px 28px #0004; backdrop-filter:blur(14px); }
 html[data-theme=Vista] .titlebar { color:#172737; text-shadow:0 1px #fff; background:transparent; } html[data-theme=Vista] .title { text-shadow:0 1px #fff; } html[data-theme=Vista] main { background:#f5f5f5; border:1px solid #657f96; } html[data-theme=Vista] .control { border-color:#ffffffa0; border-radius:0 0 4px 4px; background:linear-gradient(#dbe9f6,#88a8c7 50%,#adc4d9); } html[data-theme=Vista] .close { background:linear-gradient(#e9b5a7,#ae442d 50%,#d77d62); width:28px; }
 
+
+/* Live pages retain the original centered window in front of the landscape. */
+html:not([data-card]) body { padding:24px; }
+html:not([data-card]) body::after { z-index:0; background-position:center center; background-size:cover; }
+html:not([data-card]) .window { z-index:1; width:min(100%,474px); min-height:0; transform:none; }
+html:not([data-card]) main { min-height:220px; padding:48px 24px; gap:15px; }
+html:not([data-card]) h1 { font-size:clamp(32px,7vw,40px); }
+html:not([data-card]) p { font-size:12px; }
+@media(max-width:380px) { html:not([data-card]) body { padding:20px; } html:not([data-card]) main { padding:44px 16px; } }
+@media(max-height:480px) { html:not([data-card]) main { min-height:170px; padding:20px 16px; gap:10px; } html:not([data-card]) h1 { font-size:32px; } }
+
 </style>
 <meta property="og:type" content="website"><meta property="og:title" content="Riverplo"><meta property="og:description" content="Independent Design &amp; AI Development Studio"><meta property="og:url" content="https://riverplo.com/"><meta property="og:image" content="https://riverplo.com/og-light.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Riverplo in a Windows XP inspired window behind pixelated coastal scenery"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Riverplo"><meta name="twitter:description" content="Independent Design &amp; AI Development Studio"><meta name="twitter:image" content="https://riverplo.com/og-light.jpg"><script>const q=new URLSearchParams(location.search);if(q.get('night')==='1'||(!q.has('night')&&(new Date().getHours()>=19||new Date().getHours()<7)))document.documentElement.dataset.night='';if(q.has('card'))document.documentElement.dataset.card='';if(q.get('theme')==='vista')document.documentElement.dataset.theme='Vista';</script></head>
 <body>
