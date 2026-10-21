@@ -1,0 +1,34 @@
+.inquiry { display:grid;gap:8px;width:min(100%,320px);font-size:11px;text-align:left;user-select:text;-webkit-user-select:text; }
+.inquiry textarea,.inquiry input { font:12px Tahoma,sans-serif;border:1px solid #7f9db9;padding:6px;width:100%;user-select:text;-webkit-user-select:text; }
+.inquiry textarea { resize:vertical;min-height:64px;max-height:100px; }
+.inquiry button { position:relative;height:28px;overflow:hidden;border:1px solid #003c74;border-radius:3px;background:linear-gradient(#fff,#ece9d8);font:12px Tahoma,sans-serif; }
+.inquiry button.sending { color:#245021;background:repeating-linear-gradient(90deg,#41b522 0 8px,#72d257 8px 10px,#ece9d8 10px 12px);background-size:50% 100%;background-repeat:no-repeat;animation:progress 1s linear infinite; }
+@keyframes progress { from {background-position:-100% 0} to {background-position:200% 0} }
+.transferring h1 { mask-image:repeating-conic-gradient(#000 0 25%,transparent 0 50%);mask-size:4px 4px;animation:dither .35s steps(4) forwards; }
+@keyframes dither {to {opacity:0;mask-size:12px 12px}}
+.transfer { display:none;position:absolute;top:80px;left:calc(50% - 50px);width:100px;height:35px; }
+.transferring .transfer { display:block; }
+.transfer::before,.transfer::after {content:'';position:absolute;width:22px;height:17px;top:15px;background:linear-gradient(#ffe8a2,#e6b94f);border:1px solid #9b772e;}
+.transfer::before {left:0}.transfer::after {right:0}
+.transfer i {position:absolute;left:15px;top:0;width:12px;height:16px;border:1px solid #6383a9;background:#fff;animation:fileflight 1s infinite;}
+@keyframes fileflight {0%{transform:translate(0,12px) rotate(-10deg)}50%{transform:translate(35px,-4px) rotate(10deg)}100%{transform:translate(65px,12px) rotate(-10deg)}}
+@media(prefers-reduced-motion:reduce){.inquiry button.sending,.transferring h1,.transfer i{animation:none}.transferring h1{opacity:0}.transfer i{left:44px}}
+.inquiry-widget{width:min(100%,320px)}
+.inquiry-widget[hidden],.inquiry[hidden]{display:none}
+.open-inquiry{font:12px Tahoma,sans-serif;min-height:28px;padding:4px 16px;border:1px solid #003c74;border-radius:3px;background:linear-gradient(#fff,#ece9d8);color:#222;cursor:pointer}
+html:not([data-card]) .window.form-open main{padding:18px 16px;gap:10px;max-height:calc(100svh - 130px);min-height:0;overflow:auto;}
+.window.form-open main>p,.window.form-open address{display:none}
+.inquiry label{display:grid;gap:3px}
+.inquiry .notice-summary{font:10px/1.6 Tahoma,sans-serif;color:#555;margin:0;text-align:left}
+.inquiry .cancel-inquiry{height:auto;border:0;background:none;color:#15478d;text-decoration:underline;font-size:10px;justify-self:center;padding:3px}
+.send-control{position:relative;width:100%;--hint-bg:#ffffe1;--hint-border:#8d8d71;--hint-text:#55574d}
+html[data-theme=Vista] .send-control{--hint-bg:linear-gradient(#fff,#e8eef5);--hint-border:#778898;--hint-text:#4b5764}
+.send-control>button{width:100%;cursor:pointer}
+.send-hint{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:min(290px,calc(100vw - 80px));padding:7px 9px;border:1px solid var(--hint-border);border-radius:3px;background:var(--hint-bg);color:var(--hint-text);box-shadow:1px 2px 3px #0002;font:11px/1.5 Tahoma,sans-serif;opacity:0;pointer-events:none;z-index:5;text-align:left;transition:opacity .1s}
+.send-control:hover .send-hint,.send-control:focus-within .send-hint{opacity:1;pointer-events:auto}
+.send-hint a{color:#15478d}
+@media(hover:none),(pointer:coarse){.send-hint{position:static;transform:none;display:block;opacity:1;pointer-events:auto;width:100%;margin-bottom:7px}}
+@media(prefers-reduced-motion:reduce){.send-hint{transition:none}}
+.send-hint .transfer-choice{display:block;width:auto;min-height:24px;height:auto;margin:6px 0 0;padding:3px 7px;color:#15478d;font:10px Tahoma,sans-serif;border:1px solid #8d8d71;background:#fffff4;border-radius:2px;cursor:pointer}.send-hint .transfer-choice[aria-pressed=true]{box-shadow:inset 1px 1px 2px #0002;background:#eeedd8}html[data-theme=Vista] .send-hint .transfer-choice{background:#f3f7fc;border-color:#778898}
+
+.inquiry .step-notice{font:10px/1.6 Tahoma,sans-serif;color:#444;text-align:left;background:#ffffe1;border:1px solid #8d8d71;padding:7px;margin:0}.inquiry .step-notice[hidden]{display:none}html[data-theme=Vista] .inquiry .step-notice{background:#f3f7fc;border-color:#778898}

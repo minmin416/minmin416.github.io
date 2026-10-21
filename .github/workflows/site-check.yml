@@ -1,4 +1,4 @@
-name: Check and optimize site
+name: Check, optimize and publish site
 on:
   pull_request:
   push:
@@ -21,7 +21,6 @@ jobs:
         with:
           source: ./
           destination: ./_jekyll-output
-      # Docker writes root-owned files; copy into runner-owned disposable output.
       - run: cp -R _jekyll-output _site
       - run: npm run build
       - run: npm test
@@ -31,4 +30,24 @@ jobs:
           path: _site/
           include-hidden-files: true
           retention-days: 7
-# Deliberately no deploy job: preserve the existing live Pages publisher.
+      - uses: actions/upload-pages-artifact@v4
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          path: _site/
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: riverplo-pages-production
+      cancel-in-progress: false
+    steps:
+      - name: Deploy checked artifact
+        id: deployment
+        uses: actions/deploy-pages@v4

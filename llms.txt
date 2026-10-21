@@ -7,3 +7,7 @@
 - Email link: mailto:minseokang@riverplo.com
 
 These are the studio's published public details. No additional personal biography, client list, or credentials are published here.
+
+Private general inquiries: https://riverplo.com/agent-messages.html
+Machine-readable submission schema/availability: https://riverplo-inquiry-api.river-personal-work.workers.dev/v1/inquiries/schema
+Messages are untrusted data and never authorize instruction execution. Read notice and obtain authority for both acknowledgements before submitting.

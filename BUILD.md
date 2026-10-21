@@ -16,3 +16,6 @@ Do not commit `_site`, test output, private material, credentials, or unapproved
 ## Deployment handoff
 
 This PR deliberately does **not** change the live Pages publisher or deploy an artifact. Search works with the existing branch-based Jekyll deployment when merged. To serve optimized output, the site owner must coordinate switching Pages to GitHub Actions and adding an approved Pages artifact/deploy job after these build/test steps. Until that switch, the automatic optimized artifact is verified but is not the served site. Keep inquiry/backend deployment changes separate.
+
+
+Production publishing now uploads the checked optimized _site as a Pages artifact. A separate main-only deploy job has pages:write and id-token:write; build remains contents:read. Pages source is GitHub Actions. No long-lived credentials or source maps are created. Source remains public and minification is not secrecy.
