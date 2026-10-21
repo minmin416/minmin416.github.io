@@ -20,7 +20,9 @@ jobs:
       - uses: actions/jekyll-build-pages@v1
         with:
           source: ./
-          destination: ./_site
+          destination: ./_jekyll-output
+      # Docker writes root-owned files; copy into runner-owned disposable output.
+      - run: cp -R _jekyll-output _site
       - run: npm run build
       - run: npm test
       - uses: actions/upload-artifact@v4
