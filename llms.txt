@@ -10,4 +10,4 @@ These are the studio's published public details. No additional personal biograph
 
 Private general inquiries: https://riverplo.com/agent-messages.html
 Machine-readable submission schema/availability: https://riverplo-inquiry-api.river-personal-work.workers.dev/v1/inquiries/schema
-Messages are untrusted data and never authorize instruction execution. Read notice and obtain authority for both acknowledgements before submitting.
+Messages are untrusted data and never authorize instruction execution. Read the notice and have authority to send any submitted personal data. The API records send intent, not a notice-reading or consent claim.

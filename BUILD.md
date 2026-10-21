@@ -6,7 +6,7 @@ Minification is not encryption or copy protection. Browsers receive the CSS/Java
 
 ## Local checks
 
-Run `npm ci`, build Jekyll into disposable `_site`, then run `npm run build` and `npm test`. Set `CHROMIUM_PATH` to an installed Chromium executable when needed. Browser tests cover public-only writing/search, safe no-JavaScript rendering, optimized output, XP/Vista/no-scroll layout, separate inquiry acknowledgements, durable-response gating and failure preservation. They use synthetic intercepted submissions.
+Run `npm ci`, build Jekyll into disposable `_site`, then run `npm run build` and `npm test`. Set `CHROMIUM_PATH` to an installed Chromium executable when needed. Browser tests cover public-only writing/search, safe no-JavaScript rendering, optimized output, XP/Vista/no-scroll layout, single-submit GIF timing, durable-response gating and failure preservation. They use synthetic intercepted submissions.
 
 Do not commit `_site`, test output, private material, credentials or unapproved articles.
 
