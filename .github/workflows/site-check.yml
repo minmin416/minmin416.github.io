@@ -1,0 +1,34 @@
+name: Check and optimize site
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_jekyll-output
+      # Docker writes root-owned files; copy into runner-owned disposable output.
+      - run: cp -R _jekyll-output _site
+      - run: npm run build
+      - run: npm test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: optimized-site
+          path: _site/
+          include-hidden-files: true
+          retention-days: 7
+# Deliberately no deploy job: preserve the existing live Pages publisher.

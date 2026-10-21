@@ -9,6 +9,12 @@ exclude:
   - README.md
   - WRITING.md
   - tools
+  - tests
+  - node_modules
+  - package.json
+  - package-lock.json
+  - BUILD.md
+  - playwright.config.js
   - Gemfile
   - Gemfile.lock
 defaults:
