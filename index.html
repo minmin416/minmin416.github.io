@@ -43,7 +43,7 @@ main { min-height:300px; padding:38px 22px 90px; gap:14px; }
 h1 { font-size:clamp(36px,6vw,52px); }
 html[data-night] { background:#000; }
 footer { position:absolute; z-index:4; bottom:max(12px,env(safe-area-inset-bottom)); left:0; width:100%; text-align:center; font-size:10px; }
-footer a { background:#ffffffe8; padding:5px 9px; border-radius:2px; }
+footer button { font:10px Tahoma,sans-serif; color:#15478d; border:1px solid #9b9b9b; padding:4px 8px; margin-left:5px; border-radius:2px; background:linear-gradient(#fff,#ece9d8); cursor:pointer; } footer button:focus-visible {outline:2px solid #15478d;outline-offset:3px;} footer a { background:#ffffffe8; padding:5px 9px; border-radius:2px; }
 @media(max-width:600px) { .window { width:calc(100vw - 32px); min-height:286px; transform:translateY(-12svh); } main { min-height:246px; padding:24px 12px 60px; } body::after { background-size:auto 128svh; } p { font-size:11px; } }
 @media(max-height:480px) { .window { transform:translateY(-12svh); min-height:210px; width:min(76vw,640px); } main { min-height:170px; padding:14px 20px 45px; gap:8px; } h1 { font-size:32px; } body::after { background-size:100vw auto; } }
 html[data-card] body::after { background-size:1200px auto; } html[data-card] .window { width:800px; min-height:380px; transform:translateY(-30px); } html[data-card] main { min-height:340px; padding:55px 22px 100px; justify-content:flex-start; } html[data-card] address { display:none; } html[data-card] h1 { font-size:64px; } html[data-card] p { font-size:19px; } html[data-card] address { font-size:15px; } html[data-card] footer { display:none; }
@@ -65,5 +65,5 @@ html[data-theme=Vista] .titlebar { color:#172737; text-shadow:0 1px #fff; backgr
       <address><a href="mailto:minseokang@riverplo.com">minseokang@riverplo.com</a></address>
     </main>
   </div>
-<footer><a href="privacy.html">Privacy</a></footer></body>
+<footer><a href="privacy.html">Privacy</a><button id="theme-switch" type="button" aria-label="Switch to Vista theme" aria-pressed="false">Vista</button></footer><script>const themeButton=document.getElementById("theme-switch");function syncThemeButton(){const vista=document.documentElement.dataset.theme==="Vista";themeButton.textContent=vista?"XP":"Vista";themeButton.setAttribute("aria-pressed",String(vista));themeButton.setAttribute("aria-label",vista?"Switch to XP theme":"Switch to Vista theme");}themeButton.addEventListener("click",()=>{if(document.documentElement.dataset.theme==="Vista")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme="Vista";syncThemeButton();});syncThemeButton();</script></body>
 </html>
