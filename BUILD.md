@@ -1,21 +1,17 @@
-# Optimized site build
+# Optimized site build and publishing
 
-The source remains ordinary GitHub Pages-compatible Jekyll. `Check and optimize site` builds Jekyll, bundles/minifies JavaScript and minifies CSS and HTML, tests the result, and produces an `optimized-site` artifact on every PR and main push. No source maps are generated; a map file/reference causes the build to fail. Layout, ARIA attributes, structured data, RSS and text remain readable by browsers and agents.
+Ordinary Jekyll source remains editable and public. The workflow builds Jekyll, bundles/minifies JavaScript, minifies CSS/HTML, and runs browser checks before publishing `_site`. Source maps and source-map references fail the build. Semantic HTML, ARIA, structured data, writing search and RSS remain readable.
 
-This is minification, not encryption or copy protection. Browsers must receive CSS/JavaScript to display the page, and this public repository intentionally exposes source and history.
+Minification is not encryption or copy protection. Browsers receive the CSS/JavaScript, and this repository exposes authoring source and history.
 
 ## Local checks
 
-- `npm ci`
-- Build Jekyll to `_site` using GitHub Pages' Jekyll environment (or `jekyll build`).
-- `npm run build` optimizes that disposable output.
-- `npx playwright install chromium` then `npm test` tests public-post search and the optimizer. Set `CHROMIUM_PATH` to a system Chromium executable if needed.
+Run `npm ci`, build Jekyll into disposable `_site`, then run `npm run build` and `npm test`. Set `CHROMIUM_PATH` to an installed Chromium executable when needed. Browser tests cover public-only writing/search, safe no-JavaScript rendering, optimized output, XP/Vista/no-scroll layout, separate inquiry acknowledgements, durable-response gating and failure preservation. They use synthetic intercepted submissions.
 
-Do not commit `_site`, test output, private material, credentials, or unapproved writing.
+Do not commit `_site`, test output, private material, credentials or unapproved articles.
 
-## Deployment handoff
+## Production
 
-This PR deliberately does **not** change the live Pages publisher or deploy an artifact. Search works with the existing branch-based Jekyll deployment when merged. To serve optimized output, the site owner must coordinate switching Pages to GitHub Actions and adding an approved Pages artifact/deploy job after these build/test steps. Until that switch, the automatic optimized artifact is verified but is not the served site. Keep inquiry/backend deployment changes separate.
+Pages source is GitHub Actions. Pull requests build/test and retain a generic `optimized-site` artifact, but never deploy. A successful main push or main workflow dispatch uploads a `github-pages` artifact. A separate dependent job publishes that artifact to the existing `github-pages` environment, using only `pages:write` and `id-token:write`; the build has `contents:read`. No long-lived token is created. Deployments are serialized without cancelling an in-progress deployment.
 
-
-Production publishing now uploads the checked optimized _site as a Pages artifact. A separate main-only deploy job has pages:write and id-token:write; build remains contents:read. Pages source is GitHub Actions. No long-lived credentials or source maps are created. Source remains public and minification is not secrecy.
+The inquiry API is an isolated Cloudflare Worker/D1 deployment. Its credentials and private administration tools are not in this public repository. Site publishing does not deploy the API, access the inbox, or change DNS/mail. A failed API request preserves form input and never claims success.

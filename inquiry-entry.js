@@ -29,7 +29,7 @@ class InquirySender {
   this.form.setAttribute('aria-busy','true'); this.button.classList.add('sending');
   this.button.textContent='Sending…'; this.status.textContent='Waiting for storage confirmation…';
   const w=this.form.closest('.window'),h=w?.querySelector('h1'),transfer=w?.querySelector('.transfer');
-  if(w&&h&&transfer){const a=w.getBoundingClientRect(),b=h.getBoundingClientRect();transfer.style.top=(b.top-a.top+(b.height-35)/2)+'px';transfer.style.left=(b.left-a.left+(b.width-100)/2)+'px';}
+  if(w&&h&&transfer){const a=w.getBoundingClientRect(),b=h.getBoundingClientRect();const width=Math.min(272,a.width-40);transfer.style.width=width+'px';transfer.style.height='60px';transfer.style.top=(b.top-a.top+(b.height-60)/2)+'px';transfer.style.left=(b.left-a.left+(b.width-width)/2)+'px';}
   w?.classList.add('transferring'); const start=performance.now();
   try {
    const payload={id:this.id,message,reply,noticeVersion:'riverplo-inquiries-2026-10-21-v2',collectionConsent:true,overseasConsent:true,submissionIntent:'send_after_notice'};
