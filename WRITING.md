@@ -27,3 +27,7 @@ Both published:true and visibility:public are required by the list/feed/post lay
 Each article links to its actual source-file commit history. GitHub preserves the file's real commit IDs, additions and edits. Front-matter dates are editorial metadata and Git author/committer dates can be set by an author. Neither proves first authorship or constitutes a trusted timestamp. Do not backdate articles, invent authorship claims, or replace Git history with a claimed date.
 
 No article has been added as part of the initial setup. Synthetic test articles must stay in a disposable local test fixture and must never be pushed to this repository.
+
+## Search
+
+The writing index searches title, publication date and article text locally in the visitor's browser. Only posts already selected by the exact public/published list filters are included; there is no RiverOS connection or additional data source. Queries are not sent to a search service or stored. The full public list remains available when JavaScript is disabled. New approved posts become searchable on the next Jekyll build automatically.
