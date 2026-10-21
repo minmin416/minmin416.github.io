@@ -1,0 +1,21 @@
+url: "https://riverplo.com"
+baseurl: ""
+title: Riverplo
+description: Independent Design & AI Development Studio
+future: false
+show_drafts: false
+permalink: /writing/:title/
+exclude:
+  - README.md
+  - WRITING.md
+  - tools
+  - Gemfile
+  - Gemfile.lock
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      published: false
+      visibility: private
