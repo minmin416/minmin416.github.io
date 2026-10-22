@@ -4,7 +4,7 @@ layout: null
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Writing — Riverplo</title><meta name="description" content="Public writing from Riverplo"><link rel="canonical" href="https://riverplo.com/writing/"><link rel="alternate" type="application/rss+xml" title="Riverplo writing" href="/feed.xml"><link rel="stylesheet" href="/writing/style.css"><script src="/writing/search.js" defer></script></head>
 <body><main><header><a href="/">Riverplo</a><nav aria-label="Writing links"><a href="/feed.xml">RSS</a> · <a href="https://github.com/minmin416/minmin416.github.io">Public repository</a></nav></header><h1>Writing</h1>
-{% assign public_posts = site.posts | where: "visibility", "public" | where: "published", true %}
+{% assign public_posts = site.posts | where: "visibility", "public" | where_exp: "post", "post.published == true" %}
 <section class="search" aria-label="Search public writing" hidden>
 <label for="writing-search">Search writing</label>
 <div class="search-controls"><input id="writing-search" type="search" autocomplete="off" placeholder="Title, text, or date"><button id="clear-search" type="button">Clear</button></div>
